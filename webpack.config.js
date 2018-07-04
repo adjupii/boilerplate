@@ -1,6 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const jsCwd = path.join(process.cwd(), './src');
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -20,6 +24,24 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDev
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDev
+            }
+          }
+        ]
       }
     ]
   },
@@ -30,7 +52,11 @@ module.exports = {
       'app': jsCwd
     }
   },
-  plugins: [],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css'
+    })
+  ],
   devServer: {
     contentBase: __dirname,
     compress: true,
@@ -42,4 +68,22 @@ if (isDev) {
   module.exports.plugins.push(
     new webpack.HotModuleReplacementPlugin()
   );
+} else {
+  module.exports.optimization = {
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          beautify: false,
+          mangle: {
+            keep_fnames: true
+          },
+          compress: {
+            drop_console: false
+          },
+          comments: false
+        }
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  };
 }

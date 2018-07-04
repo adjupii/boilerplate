@@ -1,5 +1,7 @@
 import 'babel-polyfill';
 
+import 'bootstrap/scss/bootstrap.scss';
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Container } from 'reactstrap';
+
 const App = () => {
   return (
-    <div className='wrapper'>
+    <Container>
       Application wrapper
-    </div>
+    </Container>
   )
 };
 
