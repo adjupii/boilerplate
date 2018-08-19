@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const jsCwd = path.join(process.cwd(), './src');
 const isDev = process.env.NODE_ENV !== 'production';
@@ -24,24 +22,6 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: isDev
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: isDev
-            }
-          }
-        ]
       }
     ]
   },
@@ -52,13 +32,11 @@ module.exports = {
       'app': jsCwd
     }
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'bundle.css'
-    })
-  ],
+  plugins: [],
   devServer: {
     contentBase: __dirname,
+    hot: true,
+    open: true,
     compress: true,
     historyApiFallback: true
   }
@@ -82,8 +60,7 @@ if (isDev) {
           },
           comments: false
         }
-      }),
-      new OptimizeCSSAssetsPlugin({})
+      })
     ]
   };
 }

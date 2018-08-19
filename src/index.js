@@ -1,18 +1,16 @@
 import 'babel-polyfill';
 
-import 'bootstrap/scss/bootstrap.scss';
-
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
 
-import App from './App';
+import Router from './Router';
 
 render(
   <Provider store={store}>
-    <App />
+    <Router />
   </Provider>,
   document.getElementById('root')
 );
