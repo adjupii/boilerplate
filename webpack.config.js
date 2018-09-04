@@ -10,6 +10,10 @@ module.exports = {
   context: jsCwd,
   entry: './index.js',
   mode: isDev ? 'development' : 'production',
+  stats: {
+    warnings: false,
+    children: false
+  },
   output: {
     path: path.join(process.cwd(), 'dest'),
     filename: 'bundle.js',

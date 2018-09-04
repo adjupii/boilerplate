@@ -8,16 +8,15 @@
   "license": "ISC",
   "scripts": {
     "dev": "webpack-dev-server --color",
-    "build": "NODE_ENV=production webpack --progress --hide-modules"
+    "build": "set NODE_ENV=production&&webpack --progress --hide-modules"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-regenerator": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
     "eslint": "^5.5.0",
     "eslint-plugin-react": "^7.11.1",
     "react-router-dom": "^4.3.1",
@@ -27,6 +26,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
