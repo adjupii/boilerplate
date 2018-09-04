@@ -8,17 +8,22 @@
   "license": "ISC",
   "scripts": {
     "dev": "webpack-dev-server --color",
-    "build": "set NODE_ENV=production&&webpack --progress --hide-modules"
+    "build": "set NODE_ENV=production&&webpack --progress --hide-modules",
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0",
     "@babel/plugin-transform-regenerator": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.2",
     "eslint": "^5.5.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0",
     "react-router-dom": "^4.3.1",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.12.2",
