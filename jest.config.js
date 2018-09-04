@@ -1,9 +1,11 @@
 module.exports = {
   clearMocks: true,
   coveragePathIgnorePatterns: [
-    '<rootDir>/node_modules'
+    '<rootDir>/node_modules',
+    '<rootDir>/test'
   ],
   coverageDirectory: 'coverage',
+  setupFiles: ['./test/jest.setup.js'],
   roots: [
     '<rootDir>/src'
   ],
